@@ -19,7 +19,7 @@
       ]
     },
     {
-      "source": "/js/products.js",
+      "source": "/product.js",
       "headers": [
         {
           "key": "Cache-Control",

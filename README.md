@@ -1,33 +1,35 @@
 # Prodexa
 
-A static React storefront built with HTML, CSS, and JavaScript. React and React Router load from their production browser bundles, so no framework CLI or local build server is required.
+A static storefront built with HTML, CSS, and vanilla JavaScript.
 
 ## Run locally
 
-Open `index.html` in a browser. An internet connection is required for React, React Router, Google Fonts, and the product photography.
+Open `index.html` directly in a browser. No package installation or build step is required.
+
+An internet connection is required for Google Fonts and product photography.
 
 ## Project structure
 
-- `index.html` contains page metadata and loads the browser dependencies.
-- `script.js` contains the React app, route definitions, cart state, and page components.
-- `js/products.js` contains the product catalog data.
+- `index.html` contains page metadata and loads the catalog and storefront scripts.
+- `script.js` renders the storefront, handles hash-based routes, filters the catalog, and manages cart state.
+- `product.js` contains the product catalog data; `product.min.js` is its minified copy.
 - `style.css` contains the responsive storefront styles.
-- `script.min.js`, `style.min.css`, and `js/products.min.js` are formatted copies for easier reading. The page loads the readable source files.
+- `style.min.css` is the minified stylesheet copy.
 
-The catalog uses React Router hash routes, browser storage for the cart, responsive image widths, product JSON-LD, and client-side search, filtering, and sorting.
+The catalog uses hash routes, browser storage for the cart, responsive image widths, product JSON-LD, and client-side search, filtering, and sorting.
 
 ## Deploy
 
-The app is static and requires no build command.
+The project is static and has no build command.
 
 ### GitHub Pages
 
-The `.github/workflows/pages.yml` workflow publishes the project root when changes are pushed to `main`. Create a GitHub repository, push the project files, and choose **Settings → Pages → GitHub Actions**. The public URL appears when the workflow completes.
+The `.github/workflows/pages.yml` workflow publishes the project files when changes are pushed to `main`. Create a GitHub repository, push the project files, and choose **Settings → Pages → GitHub Actions**. The public URL appears when the workflow completes.
 
 ### Vercel
 
-The included `vercel.json` configures cache headers for the static source assets. Sign in with the Vercel CLI and run `vercel --prod` from the project directory to publish directly, or import a connected Git repository.
+Vercel serves the project as a static site using the included configuration. Import the Git repository or run `vercel --prod` from the project directory.
 
-This workspace is not currently connected to either hosting account or a Git repository, so a public deployment still requires account access.
+The project is connected to a GitHub repository, but publishing requires access to the hosting account.
 
 Both hosts serve this static frontend only. The checkout button is a front-end placeholder; real payments, order handling, and server-side product search require a separate backend and payment provider.
