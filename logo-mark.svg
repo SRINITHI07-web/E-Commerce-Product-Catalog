@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Prodexa logo mark">
+  <rect width="128" height="128" rx="28" fill="#1b2f2a"/>
+  <path d="M42 22V106M42 22H73C90 22 100 32 100 48C100 64 90 74 73 74H42" fill="none" stroke="#f5f1e7" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M64 74L90 88" fill="none" stroke="#d4af64" stroke-width="8" stroke-linecap="round"/>
+</svg>

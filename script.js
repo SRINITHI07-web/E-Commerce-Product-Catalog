@@ -75,7 +75,7 @@ function renderNavbar() {
   return `
     <header class="site-header">
       <a class="brand-lockup" href="#/" aria-label="Prodexa home">
-        <span class="brand-mark">P</span>
+        <img class="brand-mark" src="./logo-mark.svg" alt="Prodexa mark" width="32" height="32">
         <span class="wordmark">Prodexa</span>
       </a>
       <nav class="main-nav" aria-label="Main navigation">
@@ -314,7 +314,10 @@ function renderToast() {
 function renderFooter() {
   return `
     <footer class="site-footer">
-      <a class="wordmark" href="#/">Prodexa</a>
+      <div class="footer-brand">
+        <img class="brand-mark" src="./logo-mark.svg" alt="Prodexa mark" width="24" height="24">
+        <a class="wordmark" href="#/">Prodexa</a>
+      </div>
       <p>Everyday essentials, made to last.</p>
       <span>© Prodexa 2026</span>
     </footer>`;

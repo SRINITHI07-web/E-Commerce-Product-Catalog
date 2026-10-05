@@ -65,6 +65,20 @@ img {
   align-items: center;
   border-bottom: 1px solid var(--line);
 }
+.brand-lockup,
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand-mark {
+  display: block;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  box-shadow: 0 10px 22px rgb(27 47 42 / 15%);
+}
 .wordmark {
   width: fit-content;
   font-family: var(--serif);
