@@ -747,6 +747,14 @@ img {
   color: var(--ink);
   text-decoration: none;
 }
+.nav-signout {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+}
 .header-actions {
   display: flex;
   align-items: center;
@@ -983,6 +991,12 @@ img {
 }
 .site-footer .wordmark span {
   display: none;
+}
+.site-footer .support-link {
+  color: var(--muted);
+  font-size: 10px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 .detail-page,
 .cart-page {
@@ -1269,6 +1283,324 @@ img {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+.our-way-hero {
+  position: relative;
+  min-height: 440px;
+  height: 600px;
+  overflow: hidden;
+  background: #445449;
+  color: white;
+}
+.our-way-hero > img,
+.our-way-hero-shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.our-way-hero > img {
+  object-fit: cover;
+  object-position: center 54%;
+}
+.our-way-hero-shade {
+  background: linear-gradient(90deg, rgb(18 28 21 / 66%), rgb(18 28 21 / 8%) 100%);
+}
+.our-way-hero-copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: inherit;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-block: 70px;
+}
+.our-way-hero-copy .eyebrow {
+  color: #e4e8dd;
+}
+.our-way-hero-copy h1 {
+  max-width: 660px;
+  margin: 20px 0 16px;
+  font-family: var(--serif);
+  font-size: 68px;
+  font-weight: 500;
+  line-height: 1.04;
+}
+.our-way-hero-copy p {
+  max-width: 430px;
+  margin: 0;
+  color: rgb(255 255 255 / 88%);
+  font-size: 14px;
+  line-height: 1.8;
+}
+.our-way-intro {
+  max-width: 820px;
+  padding-block: 100px 84px;
+  text-align: center;
+}
+.our-way-intro h2,
+.our-way-cta h2 {
+  margin: 16px 0;
+  font-family: var(--serif);
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 1.16;
+}
+.our-way-intro > p {
+  max-width: 640px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.9;
+}
+.our-way-quote {
+  max-width: 900px;
+  margin: 0 auto 54px;
+  padding: 34px 24px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+.our-way-quote p {
+  margin: 0 0 12px;
+  font-family: var(--serif);
+  font-size: 25px;
+  line-height: 1.45;
+}
+.our-way-quote cite {
+  color: var(--muted);
+  font-size: 10px;
+  font-style: normal;
+}
+.our-way-values {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.our-way-values article {
+  padding: 30px 28px 36px 0;
+}
+.our-way-values article + article {
+  padding-left: 28px;
+  border-left: 1px solid var(--line);
+}
+.our-way-values article > span {
+  color: #8b7665;
+  font-size: 10px;
+}
+.our-way-values h3 {
+  margin: 25px 0 10px;
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 600;
+}
+.our-way-values p {
+  max-width: 300px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+.our-way-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 78px 24px 88px;
+  text-align: center;
+}
+.our-way-cta h2 {
+  margin: 12px 0 25px;
+  font-size: 34px;
+}
+.auth-page {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: stretch;
+  gap: 56px;
+  padding-block: 64px;
+}
+.auth-aside {
+  display: flex;
+  min-height: 490px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 38px;
+  background: #315c45;
+  color: white;
+}
+.auth-aside .eyebrow {
+  color: #d3e0d1;
+}
+.auth-aside h1 {
+  max-width: 390px;
+  margin: 28px 0 14px;
+  font-family: var(--serif);
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 1.08;
+}
+.auth-aside p {
+  max-width: 330px;
+  margin: 0;
+  color: rgb(255 255 255 / 78%);
+  font-size: 13px;
+  line-height: 1.8;
+}
+.auth-aside-link {
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  border-bottom: 1px solid rgb(255 255 255 / 55%);
+  padding-bottom: 6px;
+  font-size: 11px;
+}
+.auth-panel {
+  align-self: center;
+  width: 100%;
+  max-width: 480px;
+  padding-block: 28px;
+}
+.auth-panel h2 {
+  margin: 12px 0 8px;
+  font-family: var(--serif);
+  font-size: 38px;
+  font-weight: 500;
+}
+.auth-description {
+  margin: 0 0 26px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+.auth-demo-note,
+.auth-feedback {
+  margin: 0 0 18px;
+  padding: 12px 14px;
+  border-left: 3px solid #a47b35;
+  background: #f1eee5;
+  color: #514735;
+  font-size: 11px;
+  line-height: 1.65;
+}
+.auth-form {
+  display: grid;
+  gap: 17px;
+}
+.auth-form label {
+  display: grid;
+  gap: 7px;
+  color: #4f5049;
+  font-size: 11px;
+}
+.auth-form input {
+  width: 100%;
+  height: 46px;
+  padding: 0 12px;
+  border: 1px solid #dcdad3;
+  border-radius: 2px;
+  background: white;
+  color: var(--ink);
+  font-size: 13px;
+}
+.auth-form input:focus {
+  outline: 2px solid #315c45;
+  outline-offset: 2px;
+}
+.auth-form .auth-feedback {
+  margin: 0;
+}
+.auth-error {
+  border-color: #a4483e;
+  background: #f8ece9;
+  color: #73352f;
+}
+.auth-success {
+  border-color: #315c45;
+  background: #edf2ec;
+  color: #294c39;
+}
+.auth-submit {
+  width: 100%;
+  margin-top: 4px;
+}
+.auth-submit:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+.auth-switch {
+  margin: 22px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+.auth-switch a {
+  color: var(--green);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (max-width: 900px) {
+  .auth-page {
+    gap: 30px;
+  }
+  .auth-aside {
+    padding: 30px;
+  }
+}
+@media (max-width: 700px) {
+  .our-way-hero {
+    height: 500px;
+    min-height: 0;
+  }
+  .our-way-hero-copy {
+    width: calc(100% - 40px);
+    padding-block: 50px;
+  }
+  .our-way-hero-copy h1 {
+    max-width: 460px;
+    font-size: 48px;
+  }
+  .our-way-intro {
+    padding-block: 70px 58px;
+  }
+  .our-way-intro h2 {
+    font-size: 34px;
+  }
+  .our-way-values {
+    grid-template-columns: 1fr;
+  }
+  .our-way-values article,
+  .our-way-values article + article {
+    padding: 24px 0;
+    border-left: 0;
+  }
+  .our-way-values article + article {
+    border-top: 1px solid var(--line);
+  }
+  .our-way-values h3 {
+    margin-top: 14px;
+  }
+  .auth-page {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding-block: 28px 54px;
+  }
+  .auth-aside {
+    min-height: 240px;
+    gap: 30px;
+    padding: 24px;
+  }
+  .auth-aside h1 {
+    max-width: 480px;
+    margin-top: 18px;
+    font-size: 36px;
+  }
+  .auth-panel {
+    max-width: none;
+    padding-block: 20px;
   }
 }
 

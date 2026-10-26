@@ -19,6 +19,10 @@ An internet connection is required for Google Fonts and product photography.
 
 The catalog uses hash routes, browser storage for the cart, responsive image widths, product JSON-LD, and client-side search, filtering, and sorting. React handles the interactive UI; responsive layouts are provided by the CSS breakpoints.
 
+## Sign-in and registration
+
+The sign-in and registration pages are local demos. Registration saves a profile's name and email in this browser's local storage; sign-in can find that profile by email, but does not verify a password. Passwords are never saved or sent. Profiles are not shared across browsers or devices, and clearing browser data removes them. A real store needs an authentication provider and backend before these forms can be used for customer accounts.
+
 ## Deploy
 
 The production site is static and is compiled by Vite.

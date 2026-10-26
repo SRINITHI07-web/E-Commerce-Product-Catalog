@@ -52,17 +52,17 @@ const products = [
     label: "Everyday essential",
   },
   {
-    id: "linen-throw",
-    name: "Sunday linen throw",
+    id: "window-light-print",
+    name: "Window light print",
     category: "Home",
-    price: 350,
-    color: "Oat / olive",
+    price: 450,
+    color: "Soft daylight",
     image:
-      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=82",
-    alt: "Relaxed linen throw draped across a calm living room",
+      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=82",
+    alt: "A bright, calm interior with natural light coming through a window",
     description:
-      "Washed European linen with a lived-in softness from day one. Light enough for summer, generous enough to layer when the air turns cool.",
-    label: "Natural fibers",
+      "A quiet study in light and space, chosen to bring the feeling of a sunlit window into your home.",
+    label: "Window study",
   },
   {
     id: "stoneware-mug",

@@ -5,6 +5,8 @@ import "../style.css";
 
 const pageTitle = "Prodexa — Everyday essentials, made to last";
 const categories = ["All", ...new Set(products.map((product) => product.category))];
+const ourWayImage =
+  "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=82";
 
 function readCart() {
   try {
@@ -65,7 +67,7 @@ function Eyebrow({ children, className = "" }) {
   return <span className={`eyebrow ${className}`}>{children}</span>;
 }
 
-function Navbar({ path, itemCount }) {
+function Navbar({ path, itemCount, onSearchClick }) {
   return (
     <header className="site-header">
       <a className="brand-lockup" href="#/" aria-label="Prodexa home">
@@ -79,7 +81,12 @@ function Navbar({ path, itemCount }) {
         >
           Shop
         </a>
-        <a href="#our-way">Our way</a>
+        <a href="#/our-way" aria-current={path === "/our-way" ? "page" : undefined}>
+          Our way
+        </a>
+        <a href="#/login" aria-current={path === "/login" ? "page" : undefined}>
+          Sign in
+        </a>
       </nav>
       <div className="header-actions">
         <a
@@ -87,6 +94,7 @@ function Navbar({ path, itemCount }) {
           href="#/products"
           aria-label="Search products"
           title="Search products"
+          onClick={onSearchClick}
         >
           ⌕
         </a>
@@ -177,6 +185,7 @@ function Catalog({ category, onCategoryChange, query, onQueryChange, sort, onSor
       <label className="search-box catalog-search">
         <span aria-hidden="true">⌕</span>
         <input
+          id="product-search"
           value={query}
           onChange={(event) => onQueryChange(event.target.value)}
           placeholder="Search products"
@@ -460,8 +469,174 @@ function Footer() {
         Prodexa
       </a>
       <p>Everyday essentials, made to last.</p>
+      <a className="support-link" href="mailto:srinithi.webdev@gmail.com">
+        Contact: srinithi.webdev@gmail.com
+      </a>
       <span>© Prodexa 2026</span>
     </footer>
+  );
+}
+
+function OurWay() {
+  return (
+    <main className="our-way-page">
+      <section className="our-way-hero">
+        <img
+          src={ourWayImage}
+          alt="A calm, lived-in home with natural textures"
+          fetchPriority="high"
+        />
+        <div className="our-way-hero-shade" />
+        <div className="our-way-hero-copy content-width">
+          <Eyebrow>Our way</Eyebrow>
+          <h1>Good things earn their place.</h1>
+          <p>Everyday objects, chosen for how they work and how they feel to live with.</p>
+        </div>
+      </section>
+      <section className="our-way-intro content-width">
+        <Eyebrow>A little less, a little better</Eyebrow>
+        <h2>Choose the things that make every day feel more like yours.</h2>
+        <p>
+          Prodexa brings together thoughtful pieces for home and away. We look
+          for honest materials, considered details, and designs that feel at
+          home in everyday life.
+        </p>
+      </section>
+      <blockquote className="our-way-quote content-width">
+        <p>“The best pieces become part of the way we live.”</p>
+        <cite>The Prodexa point of view</cite>
+      </blockquote>
+      <section className="our-way-values content-width" aria-label="Our values">
+        <article>
+          <span>01</span>
+          <h3>Made for everyday</h3>
+          <p>Practical pieces should feel just as good to use as they look on a shelf.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Details with a reason</h3>
+          <p>We value thoughtful shapes, useful materials, and the small things done well.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Keep what you love</h3>
+          <p>We choose enduring styles that can become part of your routine for years.</p>
+        </article>
+      </section>
+      <section className="our-way-cta">
+        <Eyebrow>Find your everyday</Eyebrow>
+        <h2>Objects worth coming back to.</h2>
+        <a className="button button-dark" href="#/products">
+          Explore the collection <span aria-hidden="true">↗</span>
+        </a>
+      </section>
+    </main>
+  );
+}
+
+function AuthPage({ mode }) {
+  const isRegister = mode === "register";
+  const [feedback, setFeedback] = useState(null);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const email = String(formData.get("email") || "").trim().toLowerCase();
+    let profiles = {};
+
+    try {
+      const storedProfiles = JSON.parse(
+        localStorage.getItem("prodexa-demo-profiles") || "{}",
+      );
+      if (
+        storedProfiles &&
+        typeof storedProfiles === "object" &&
+        !Array.isArray(storedProfiles)
+      ) {
+        profiles = storedProfiles;
+      }
+    } catch {
+      setFeedback("Browser storage is unavailable, so this demo profile can’t be saved or checked.");
+      return;
+    }
+
+    if (isRegister) {
+      const name = String(formData.get("name") || "").trim();
+      profiles[email] = { name, email };
+      try {
+        localStorage.setItem("prodexa-demo-profiles", JSON.stringify(profiles));
+        setFeedback(`Profile saved in this browser for ${name}. Your password was not saved.`);
+      } catch {
+        setFeedback("Browser storage is unavailable, so this demo profile could not be saved.");
+      }
+      return;
+    }
+
+    const profile = profiles[email];
+    setFeedback(
+      profile
+        ? `Demo profile found for ${profile.name || profile.email}. Passwords aren’t checked.`
+        : "No saved demo profile was found for this email in this browser. Create one first.",
+    );
+  }
+
+  return (
+    <main className="auth-page content-width">
+      <aside className="auth-aside">
+        <Eyebrow>{isRegister ? "Make yourself at home" : "Welcome back"}</Eyebrow>
+        <div>
+          <h1>{isRegister ? "A place for your good things." : "Good to see you again."}</h1>
+          <p>Sign in to keep your Prodexa experience close at hand.</p>
+        </div>
+        <a className="auth-aside-link" href="#/products">Browse the collection <span aria-hidden="true">↗</span></a>
+      </aside>
+      <section className="auth-panel" aria-labelledby="auth-title">
+        <Eyebrow>{isRegister ? "Create an account" : "Your account"}</Eyebrow>
+        <h2 id="auth-title">{isRegister ? "Join Prodexa" : "Sign in"}</h2>
+        <p className="auth-description">
+          {isRegister
+            ? "Create an account to make your next visit feel familiar."
+            : "Enter your details to continue."}
+        </p>
+        <p className="auth-demo-note">
+          Demo profiles save your name and email in this browser only. Passwords are never saved or checked.
+        </p>
+        <form className="auth-form" onSubmit={handleSubmit}>
+          {isRegister && (
+            <label>
+              Name
+              <input name="name" autoComplete="name" required />
+            </label>
+          )}
+          <label>
+            Email address
+            <input name="email" type="email" autoComplete="email" required />
+          </label>
+          <label>
+            Password
+            <input
+              type="password"
+              autoComplete={isRegister ? "new-password" : "current-password"}
+              minLength={6}
+              required
+            />
+          </label>
+          {feedback && (
+            <p className="auth-feedback" role="status">{feedback}</p>
+          )}
+          <button className="button button-dark auth-submit" type="submit">
+            {isRegister ? "Create account" : "Sign in"}
+            <span aria-hidden="true">↗</span>
+          </button>
+        </form>
+        <p className="auth-switch">
+          {isRegister ? "Already have an account?" : "New to Prodexa?"}{" "}
+          <a href={isRegister ? "#/login" : "#/register"}>
+            {isRegister ? "Sign in" : "Create an account"}
+          </a>
+        </p>
+      </section>
+    </main>
   );
 }
 
@@ -472,6 +647,7 @@ function App() {
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState("featured");
   const [toast, setToast] = useState("");
+  const [searchFocusRequested, setSearchFocusRequested] = useState(false);
   const toastTimer = useRef(null);
   const itemCount = Object.values(cart).reduce(
     (sum, quantity) => sum + quantity,
@@ -480,6 +656,12 @@ function App() {
   const detailProduct = path.startsWith("/products/")
     ? products.find((product) => product.id === path.slice("/products/".length))
     : null;
+
+  useEffect(() => {
+    if (!searchFocusRequested || (path !== "/" && path !== "/products")) return;
+    document.getElementById("product-search")?.focus();
+    setSearchFocusRequested(false);
+  }, [path, searchFocusRequested]);
 
   useEffect(() => {
     try {
@@ -492,7 +674,13 @@ function App() {
   useEffect(() => {
     document.title = detailProduct
       ? `${detailProduct.name} — Prodexa`
-      : pageTitle;
+      : path === "/our-way"
+        ? "Our way — Prodexa"
+        : path === "/login"
+          ? "Sign in — Prodexa"
+          : path === "/register"
+            ? "Create an account — Prodexa"
+            : pageTitle;
     document.getElementById("product-structured-data")?.remove();
 
     if (detailProduct) {
@@ -514,7 +702,7 @@ function App() {
       });
       document.head.append(structuredData);
     }
-  }, [detailProduct]);
+  }, [detailProduct, path]);
 
   useEffect(
     () => () => {
@@ -578,13 +766,21 @@ function App() {
         }
       />
     );
+  } else if (path === "/our-way") {
+    content = <OurWay />;
+  } else if (path === "/login" || path === "/register") {
+    content = <AuthPage key={path} mode={path.slice(1)} />;
   } else {
     content = <NotFound />;
   }
 
   return (
     <>
-      <Navbar path={path} itemCount={itemCount} />
+      <Navbar
+        path={path}
+        itemCount={itemCount}
+        onSearchClick={() => setSearchFocusRequested(true)}
+      />
       {content}
       <div className="toast-host" aria-live="polite">
         {toast && (
