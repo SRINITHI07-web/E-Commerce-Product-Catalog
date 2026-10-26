@@ -1,34 +1,35 @@
 # Prodexa
 
-A static storefront built with HTML, CSS, and vanilla JavaScript.
+A responsive static storefront built with React, Vite, and CSS.
 
 ## Run locally
 
-Open `index.html` directly in a browser. No package installation or build step is required.
+Install dependencies with `npm install`, then start the development server with `npm run dev`. Vite prints the local URL to open in a browser.
+
+Run `npm run build` to create the production site in `dist/`, or `npm run preview` to preview that build locally.
 
 An internet connection is required for Google Fonts and product photography.
 
 ## Project structure
 
-- `index.html` contains page metadata and loads the catalog and storefront scripts.
-- `script.js` renders the storefront, handles hash-based routes, filters the catalog, and manages cart state.
-- `product.js` contains the product catalog data; `product.min.js` is its minified copy.
+- `index.html` contains page metadata and the React mount point.
+- `src/main.jsx` contains the React storefront, hash-based routes, product filtering, and cart interactions.
+- `product.js` exports the product catalog.
 - `style.css` contains the responsive storefront styles.
-- `style.min.css` is the minified stylesheet copy.
 
-The catalog uses hash routes, browser storage for the cart, responsive image widths, product JSON-LD, and client-side search, filtering, and sorting.
+The catalog uses hash routes, browser storage for the cart, responsive image widths, product JSON-LD, and client-side search, filtering, and sorting. React handles the interactive UI; responsive layouts are provided by the CSS breakpoints.
 
 ## Deploy
 
-The project is static and has no build command.
+The production site is static and is compiled by Vite.
 
 ### GitHub Pages
 
-The `.github/workflows/pages.yml` workflow publishes the project files when changes are pushed to `main`. Create a GitHub repository, push the project files, and choose **Settings → Pages → GitHub Actions**. The public URL appears when the workflow completes.
+The `.github/workflows/pages.yml` workflow builds the app and publishes `dist/` when changes are pushed to `main`. Set **Settings → Pages → Build and deployment → Source** to **GitHub Actions**. The public URL appears when the workflow completes.
 
 ### Vercel
 
-Vercel serves the project as a static site using the included configuration. Import the Git repository or run `vercel --prod` from the project directory.
+Import the Git repository into Vercel. It detects the Vite build command and `dist/` output directory.
 
 The project is connected to a GitHub repository, but publishing requires access to the hosting account.
 

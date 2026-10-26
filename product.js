@@ -1,4 +1,4 @@
-window.StoreProducts = [
+const products = [
   {
     id: "arc-lamp",
     name: "Arc table lamp",
@@ -55,7 +55,7 @@ window.StoreProducts = [
     id: "linen-throw",
     name: "Sunday linen throw",
     category: "Home",
-    price: 150,
+    price: 350,
     color: "Oat / olive",
     image:
       "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=82",
@@ -143,3 +143,5 @@ window.StoreProducts = [
     label: "New arrival",
   },
 ];
+
+export default products;
